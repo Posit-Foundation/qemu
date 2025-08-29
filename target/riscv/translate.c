@@ -19,6 +19,7 @@
 #include "qemu/osdep.h"
 #include "qemu/log.h"
 #include "cpu.h"
+#include "measure.h"
 #include "tcg/tcg-op.h"
 #include "exec/helper-proto.h"
 #include "exec/helper-gen.h"
@@ -1262,6 +1263,10 @@ static void decode_opc(CPURISCVState *env, DisasContext *ctx)
                                                ctx->base.pc_next + 2));
         }
         ctx->opcode = opcode;
+
+	/* Insert stub call */
+	uint32_t primary = ctx->opcode & 0x7f;
+	riscv_measure_stub(primary);
 
         for (guint i = 0; i < ctx->decoders->len; ++i) {
             riscv_cpu_decode_fn func = g_ptr_array_index(ctx->decoders, i);
