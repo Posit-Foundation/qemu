@@ -17,3 +17,10 @@
  * You should have received a copy of the GNU General Public License along with
  * this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+#include <stdio.h>
+#include "measure.h"
+
+void riscv_measure_stub(uint32_t opc) {
+    printf("# Primary opcode: 0x%02x\n", opc);
+}

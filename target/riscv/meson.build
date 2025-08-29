@@ -19,6 +19,7 @@ riscv_ss.add(files(
   'vector_internals.c',
   'bitmanip_helper.c',
   'translate.c',
+  'measure.c',
   'm128_helper.c',
   'crypto_helper.c',
   'zce_helper.c',
